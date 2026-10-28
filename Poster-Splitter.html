@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src blob: data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="Turn one image into a big poster on ordinary paper. Free, offline, adjustable sizes, overlap and a ready-to-print PDF.">
+<title>Poster Splitter: Small pages. Big possibilities.</title>
+<style>
+:root{--ink:#213e35;--muted:#64756d;--line:#dce2da;--paper:#f6f7f2;--lime:#d9edaa;--green:#285543;--dark:#16382b;--peach:#f3b39b;--error:#a22e25;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:14px;line-height:1.5}button,input,select{font:inherit}button,select,input[type=checkbox]{cursor:pointer}button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink);font-weight:650;min-height:40px;padding:9px 14px;transition:background .15s,border-color .15s}button:hover{background:#eef3e8;border-color:#a6bba7}button:disabled{cursor:default;opacity:.45}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,canvas:focus-visible{outline:3px solid #a5bd72;outline-offset:3px}button svg{width:18px;height:18px;flex:none}a{color:var(--green)}input,select{max-width:100%;min-height:42px;border:1px solid #cdd7ce;border-radius:9px;background:#fff;color:var(--ink);padding:8px 11px}input[type=number]{width:100%;font-variant-numeric:tabular-nums}input[type=checkbox]{width:16px;height:16px;min-height:0;accent-color:var(--green);margin:0 8px 0 0;flex:none}label{display:block;font-size:12px;font-weight:650;margin-bottom:5px}h1,h2,h3,p{margin:0}svg{display:block}small{font-size:12px}.muted{color:var(--muted)}.hidden,[hidden]{display:none!important}.primary{background:var(--green);border-color:var(--green);color:white}.primary:hover{background:var(--dark);border-color:var(--dark)}.quiet{background:transparent;border-color:transparent}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.04em;background:#eaf0df;color:#435b39}.dot{width:6px;height:6px;border-radius:50%;background:#658a3e}.topbar{max-width:1440px;margin:auto;height:82px;padding:0 34px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:800;letter-spacing:-.7px}.brand-mark{display:grid;grid-template-columns:repeat(2,12px);gap:3px;transform:rotate(-8deg)}.brand-mark i{display:block;height:12px;background:var(--green);border-radius:2px}.brand-mark i:last-child{background:#92ac62;transform:translate(2px,2px)}.top-actions{display:flex;align-items:center;gap:14px}.top-actions button{font-size:12px}.shell{max-width:1440px;margin:auto;padding:26px 34px 24px}.intro{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px}.intro h1{font-size:clamp(28px,3vw,40px);line-height:1.15;letter-spacing:-1.6px;font-weight:800}.intro h1 span{color:#6d8d49}.intro p{color:var(--muted);margin-top:8px;font-size:14px}.intro-note{display:flex;gap:20px;white-space:nowrap;font-size:12px;color:var(--muted);padding-bottom:3px}.intro-note span{display:flex;align-items:center;gap:6px}.intro-note svg{width:15px;height:15px}.workspace{display:grid;grid-template-columns:338px minmax(0,1fr);gap:22px;align-items:start}.settings{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.section{padding:20px;border-bottom:1px solid #e8ece5}.section:last-child{border:0}.section-head{display:flex;align-items:center;gap:9px;margin-bottom:13px}.step{display:inline-grid;place-items:center;flex:none;font-size:10px;font-weight:750;color:#5d705f;border:1px solid #dbe3d4;background:#f6f8f1;width:23px;height:23px;border-radius:7px}.section h2{font-size:14px;letter-spacing:-.2px}.drop{border:1.5px dashed #b5c7ac;border-radius:12px;padding:18px 12px;text-align:center;background:#fafbf7;transition:background .2s}.drop.over{background:#e7f1d4;border-color:#638545}.upload-symbol{display:grid;place-items:center;width:38px;height:38px;margin:0 auto 9px;background:#edf2e3;border-radius:12px}.upload-symbol svg{width:21px;height:21px}.drop strong{font-size:13px;display:block}.drop p{font-size:11px;color:var(--muted);margin:4px 0 12px}.drop button{min-height:34px;padding:6px 13px;font-size:12px}.source-info{display:flex;gap:10px;align-items:center;margin:13px 0 9px}.source-thumb{width:36px;height:44px;object-fit:cover;border:1px solid var(--line);border-radius:5px}.source-details{min-width:0;flex:1}.source-details strong{display:block;font-size:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:226px}.source-details span{font-size:11px;color:var(--muted)}.image-tools{display:flex;gap:6px}.image-tools button{padding:5px 8px;min-height:31px;font-size:11px}.image-tools .end{margin-left:auto}.row{display:flex;gap:10px}.row>*{min-width:0;flex:1}.unit-select{width:65px;flex:none}.unit-select select{width:100%;padding:8px 6px}.dimensions{margin-bottom:11px}.check{display:flex;align-items:center;gap:0;font-size:12px;font-weight:450;margin:7px 0}.presets{display:flex;gap:6px;margin-top:13px}.presets button{min-height:30px;font-size:11px;padding:5px 9px;flex:1;background:#fafbf7}.preset-caption{margin-top:11px;font-size:10px;color:var(--muted)}.spaced{margin-top:12px}.field-note{font-size:11px;color:var(--muted);margin-top:7px}.paper-select{width:100%}.advanced{margin-top:13px}.advanced summary{font-size:12px;cursor:pointer;font-weight:650;padding:4px 0}.advanced .row{margin-top:10px}.advanced select{width:100%}.options{margin-top:13px}.preview-column{position:sticky;top:18px;min-width:0}.preview-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:white}.preview-top{padding:16px 19px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}.preview-top h2{font-size:14px}.view-tabs{display:flex;border:1px solid var(--line);background:#f7f9f3;border-radius:9px;padding:3px;gap:2px}.view-tabs button{min-height:29px;font-size:11px;border-radius:6px;border:0;background:none;padding:5px 11px}.view-tabs button[aria-pressed=true]{background:white;box-shadow:0 1px 4px #203e351c;color:var(--dark)}.preview-sub{height:43px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 20px;background:#fcfdf9;border-bottom:1px solid #ebeee6;font-size:11px;color:var(--muted)}.preview-sub select{min-height:28px;font-size:11px;padding:2px 6px;width:66px;border-color:#dfe5dc}.preview-sub label{display:flex;align-items:center;margin:0;font-weight:400;font-size:11px}.preview-stage{height:526px;overflow:auto;display:grid;place-items:center;background-color:#eff2e9;background-image:radial-gradient(#ced7c8 .7px,transparent .7px);background-size:17px 17px;padding:18px;position:relative}.preview-stage canvas{display:block;max-width:none}.preview-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 20px;color:var(--muted);font-size:11px;background:#fcfdf9}.legend{display:flex;align-items:center;gap:6px}.legend i{height:8px;width:8px;background:#85b6a39c;border:1px solid #6b9586;display:block}.summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}.metric{padding:14px 16px;background:white;border:1px solid var(--line);border-radius:13px;min-width:0}.metric span{display:block;font-size:10px;color:var(--muted);font-weight:650;letter-spacing:.06em;text-transform:uppercase}.metric strong{display:block;font-size:22px;font-weight:750;margin-top:2px;letter-spacing:-.8px;overflow-wrap:anywhere}.metric small{display:block;font-size:11px;color:var(--muted);margin-top:2px}.metric.quality strong{font-size:20px}.notice{display:flex;align-items:flex-start;gap:8px;font-size:12px;margin-top:13px;padding:11px 14px;border-radius:10px;background:#eaf1dd;color:#3c5830}.notice.warn{background:#fff2d9;color:#80581b}.notice.error{background:#fcedea;color:var(--error)}.notice svg{width:16px;height:16px;flex:none;margin-top:1px}.export-row{display:flex;align-items:center;gap:16px;margin-top:16px}.export-row .primary{min-height:48px;padding:12px 24px;border-radius:11px;font-size:14px;flex:none}.export-note{font-size:11px;color:var(--muted);line-height:1.7}.export-note strong{color:var(--ink)}.download-ready{margin-top:12px;padding:12px 14px;border:1px solid #c7d8b2;background:#f4f8eb;border-radius:10px;font-size:12px}.download-ready a{font-weight:700;margin-right:13px}.status{font-size:12px;color:var(--muted);min-height:20px;margin-top:10px}.footer{display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);margin-top:27px;padding-top:16px;color:var(--muted);font-size:11px}.footer span:last-child{white-space:nowrap}dialog{border:1px solid var(--line);padding:0;border-radius:18px;box-shadow:0 20px 80px #10271c33;width:min(660px,calc(100% - 28px));max-height:90vh;color:var(--ink)}dialog::backdrop{background:#15392b70;backdrop-filter:blur(3px)}.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:17px 22px;border-bottom:1px solid var(--line)}.dialog-head h2{font-size:18px}.dialog-head button{padding:4px 10px;min-height:32px}.dialog-body{padding:22px;overflow:auto}.instructions{counter-reset:instructions;list-style:none;padding:0;margin:0}.instructions li{position:relative;padding:0 0 20px 38px;counter-increment:instructions;font-size:13px;color:var(--muted)}.instructions li:before{content:counter(instructions);display:grid;place-items:center;position:absolute;left:0;top:1px;background:var(--lime);width:25px;height:25px;border-radius:8px;font-size:12px;color:var(--ink);font-weight:750}.instructions strong{display:block;color:var(--ink);margin-bottom:3px}.help-note{background:#f4f6ef;padding:13px;border-radius:10px;font-size:12px}.help-note+ .help-note{margin-top:10px}.sheet-body{background:#edf1e8;text-align:center;padding:18px;max-height:65vh;overflow:auto}.sheet-body canvas{display:block;margin:auto;max-width:100%;height:auto;box-shadow:0 5px 17px #203e351c}.sheet-nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;gap:10px;font-size:12px}.file-input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0}.inline-error{color:var(--error);font-size:12px;margin-top:10px}.aspect-warning{font-size:11px;color:#8c5c24;margin-top:5px}
+@media(min-width:1500px){.preview-stage{height:570px}}@media(max-width:1050px){.shell{padding:24px}.topbar{padding:0 24px}.workspace{grid-template-columns:305px minmax(0,1fr);gap:16px}.section{padding:17px}.intro-note{display:none}.preview-top{padding:13px}.metric{padding:13px 11px}.metric strong{font-size:19px}.preview-sub{padding:0 12px}.export-row{gap:10px}.export-row .primary{padding:12px 16px}.export-note{font-size:10px}.preview-bottom{padding:12px}.preview-stage{height:490px}}@media(max-width:760px){.shell{padding:20px 16px}.topbar{height:68px;padding:0 16px}.brand{font-size:17px}.top-actions{gap:5px}.top-actions .pill{display:none}.top-actions button{padding:6px 8px}.intro{margin-bottom:19px}.intro h1{font-size:31px;letter-spacing:-1px}.intro p{font-size:12px;max-width:320px}.workspace{grid-template-columns:1fr}.settings{display:grid;grid-template-columns:1fr 1fr}.section{border-right:1px solid var(--line)}.section:nth-child(2){border-right:0}.section:last-child{grid-column:1/-1;border-top:0}.preview-column{position:static}.preview-stage{height:470px}.export-row .primary{flex:1}.export-note{flex:1;font-size:11px}.footer{font-size:10px}.source-details strong{max-width:175px}}@media(max-width:480px){.settings{display:block}.section{border-right:0}.section:last-child{border:0}.source-details strong{max-width:240px}.summary{gap:6px}.metric{padding:11px 9px}.metric strong{font-size:17px}.metric span{font-size:9px}.metric small{font-size:10px}.metric.quality strong{font-size:17px}.preview-stage{height:420px;padding:10px}.preview-top h2{font-size:13px}.view-tabs button{font-size:10px;padding:5px 8px}.preview-bottom{font-size:10px}.export-row{align-items:stretch;flex-direction:column;gap:8px}.export-note{text-align:center}.footer span:last-child{display:none}}
+.preview-sub label{white-space:nowrap}.preview-sub .row{gap:12px}.preview-sub .row>*{flex:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}@media print{body>*{display:none!important}body::after{content:"Export the PDF from Poster Splitter, then print that PDF at 100% / Actual size.";display:block;padding:30px;font:18px Arial;color:black}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 15v5h16v-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="icon-lock" viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v11H5zM12 14v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+<symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v6m0-10v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</defs></svg>
+<header class="topbar"><div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Poster Splitter</div><div class="top-actions"><span class="pill"><i class="dot"></i>FREE &amp; OFFLINE</span><button id="helpButton" class="quiet">How it works <span aria-hidden="true">↗</span></button></div></header>
+<main class="shell">
+<div class="intro"><div><h1>Small pages. <span>Big possibilities.</span></h1><p>Turn one image into a wall-sized poster. Your everyday printer is all you need.</p></div><div class="intro-note"><span><svg><use href="#icon-lock"/></svg>Your images stay here</span><span><svg><use href="#icon-check"/></svg>No watermarks</span></div></div>
+<div class="workspace">
+<aside class="settings" aria-label="Poster settings">
+<section class="section"><div class="section-head"><span class="step">01</span><h2>Choose your image</h2></div>
+<div class="drop" id="dropZone"><div class="upload-symbol"><svg><use href="#icon-upload"/></svg></div><strong>Drop an image here</strong><p>JPG, PNG or WebP · or paste an image</p><button id="chooseImage" class="primary">Choose image</button><input id="fileInput" class="file-input" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose a JPG, PNG or WebP image"></div>
+<div class="source-info"><img id="sourceThumb" class="source-thumb" alt="Current image thumbnail"><div class="source-details"><strong id="fileName">Sample artwork</strong><span id="fileMeta">Try the sample or add your own</span></div></div>
+<div class="image-tools"><button id="rotateLeft" title="Rotate image left" aria-label="Rotate image left">↶ Rotate</button><button id="rotateRight" title="Rotate image right" aria-label="Rotate image right">↷</button><button id="flipImage" title="Flip image horizontally">↔ Flip</button><button id="resetImage" class="quiet end" title="Load the sample artwork">Sample</button></div><p id="imageError" class="inline-error" role="alert" hidden></p>
+</section>
+<section class="section"><div class="section-head"><span class="step">02</span><h2>Make it your size</h2></div>
+<div class="row dimensions"><div><label for="posterWidth">Poster width</label><input id="posterWidth" type="number" min="2" max="500" step="0.1" value="60" inputmode="decimal"></div><div><label for="posterHeight">Poster height</label><input id="posterHeight" type="number" min="2" max="500" step="0.1" value="75" inputmode="decimal"></div><div class="unit-select"><label for="unit">Unit</label><select id="unit"><option value="cm">cm</option><option value="in">in</option><option value="mm">mm</option></select></div></div>
+<label class="check"><input type="checkbox" id="lockRatio" checked>Keep image proportions</label><p class="aspect-warning" id="aspectWarning" hidden>Unlocked: the image will stretch to fit your dimensions.</p>
+<p class="preset-caption">QUICK WIDTH</p><div class="presets"><button data-width="400">40 cm</button><button data-width="600">60 cm</button><button data-width="900">90 cm</button></div>
+</section>
+<section class="section"><div class="section-head"><span class="step">03</span><h2>Set up your paper</h2></div>
+<div class="row"><div><label for="paper">Paper size</label><select class="paper-select" id="paper"><option value="A4">A4 · 210 × 297 mm</option><option value="Letter">Letter · 8.5 × 11 in</option><option value="A3">A3 · 297 × 420 mm</option><option value="Legal">Legal · 8.5 × 14 in</option></select></div></div>
+<div class="row spaced"><div><label for="orientation">Page orientation</label><select class="paper-select" id="orientation"><option value="auto">Auto · fewer sheets</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div><label for="overlap">Overlap (mm)</label><input id="overlap" type="number" min="0" max="30" step="1" value="10" inputmode="decimal"></div></div><p class="field-note">Overlap repeats the image at each join to help you line up the sheets.</p>
+<details class="advanced"><summary>Margins &amp; image quality</summary><div class="row"><div><label for="margin">Printer margin (mm)</label><input id="margin" type="number" min="5" max="30" step="1" value="8"></div><div><label for="quality">PDF image quality</label><select id="quality"><option value="0.98">High · 98%</option><option value="1">Maximum · 100%</option><option value="0.85">Smaller file · 85%</option></select></div></div><p class="field-note">Use a margin your printer supports. Transparent areas print white.</p></details>
+<div class="options"><label class="check"><input type="checkbox" id="cropMarks" checked>Cutting marks outside the image</label><label class="check"><input type="checkbox" id="pageLabels" checked>Row &amp; column labels in the margin</label><label class="check"><input type="checkbox" id="includeGuide" checked>Add an assembly guide &amp; scale check</label></div>
+</section>
+</aside>
+<section class="preview-column" aria-label="Poster preview and export">
+<div class="preview-card"><div class="preview-top"><h2>Your poster, planned out.</h2><div class="view-tabs" aria-label="Preview view"><button id="posterView" aria-pressed="true">Assembled</button><button id="sheetsView" aria-pressed="false">Paper sheets</button></div></div>
+<div class="preview-sub"><span id="previewBadge">SAMPLE ARTWORK</span><div class="row" style="flex:none;align-items:center"><label id="gridLabel"><input type="checkbox" id="showGrid" checked>Show joins</label><label class="sr" for="zoom">Preview zoom</label><select id="zoom"><option value="1">Fit</option><option value="1.5">150%</option><option value="2">200%</option><option value="3">300%</option></select></div></div>
+<div class="preview-stage" id="previewStage"><canvas id="previewCanvas" role="img" aria-label="Poster preview with page joins"></canvas></div><div class="preview-bottom"><span class="legend"><i></i><span id="legendText">Shaded strips = repeated overlap</span></span><span id="layoutText">Calculating layout…</span></div></div>
+<div class="summary" aria-live="polite"><div class="metric"><span>Finished poster</span><strong id="sizeMetric">60 × 75 cm</strong><small id="areaMetric">Image size, after assembly</small></div><div class="metric"><span>Paper needed</span><strong id="sheetsMetric">- sheets</strong><small id="sheetsDetail">Plus 1 guide page</small></div><div class="metric quality"><span>Print detail</span><strong id="dpiMetric">- PPI</strong><small id="dpiDetail">At your chosen poster size</small></div></div>
+<div class="notice" id="notice"><svg aria-hidden="true"><use href="#icon-info"/></svg><span id="noticeText">Preparing preview…</span></div>
+<div class="export-row"><button id="exportPdf" class="primary"><svg><use href="#icon-download"/></svg><span id="exportLabel">Download print PDF</span></button><div class="export-note">Print at <strong>100% / Actual size</strong>.<br>Use single-sided printing. Turn off “Fit to page”.</div></div>
+<div class="download-ready" id="downloadReady" hidden><strong id="readySummary">Your PDF is ready.</strong><div style="margin-top:5px"><a id="downloadAgain" download>Download PDF</a><a id="openPdf" target="_blank" rel="noopener">Open PDF to print ↗</a></div></div>
+<p class="status" id="status" role="status">Try the sample, or choose your own image to get started.</p>
+</section>
+</div>
+<footer class="footer"><span>Made for home printers, big ideas and empty walls. All image processing stays in your browser.</span><span>Poster Splitter · v1.0 · Free forever</span></footer>
+</main>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-head"><h2 id="helpTitle">From image to wall.</h2><button data-close="helpDialog" aria-label="Close instructions">✕</button></div><div class="dialog-body"><ol class="instructions"><li><strong>Choose an image and set the size.</strong>Pick a JPG, PNG or WebP. Keep proportions on to avoid stretching. Rotating changes the image orientation.</li><li><strong>Match your paper and printer.</strong>Choose A4, Letter, A3 or Legal. Auto orientation picks the option with fewer sheets. Set margins to at least your printer’s minimum. 10 mm overlap is a helpful starting point.</li><li><strong>Download and print the PDF.</strong>Open it in a PDF viewer. Choose the same paper size, 100% / Actual size, and single-sided printing. Do not use Fit, Shrink, booklet or another poster-tiling mode. The PDF is already split.</li><li><strong>Check the scale, then assemble.</strong>If included, print the guide first and measure its 50 mm line. Trim the white margins at the corner marks around each image tile. Arrange row 1 left to right, then row 2. Match the repeated image strips, overlap them, and tape from behind.</li></ol><div class="help-note"><strong>Keep the picture looking good.</strong>Enlarging does not create detail. The PPI estimate uses your image’s actual pixels and the final poster size. Larger viewing distances are more forgiving.</div><div class="help-note"><strong>Local, simple and editable.</strong>No uploads, accounts or internet connection. The HTML file is the whole app and its source. Inputs: JPG, PNG and WebP, up to 80 MB. Larger images are reduced to at most 24 megapixels / 12,000 pixels per side for export; the app tells you when this happens. Maximum 200 poster sheets. PDF input is not supported.</div></div></dialog>
+<dialog id="sheetDialog" aria-labelledby="sheetTitle"><div class="dialog-head"><h2 id="sheetTitle">Sheet preview</h2><button data-close="sheetDialog" aria-label="Close sheet preview">✕</button></div><div class="sheet-body"><canvas id="sheetCanvas" role="img" aria-label="One paper sheet with margins and cutting marks"></canvas></div><div class="sheet-nav"><button id="prevSheet">← Previous</button><span id="sheetPosition"></span><button id="nextSheet">Next →</button></div></dialog>
+<script id="poster-core">
+/* Poster Splitter 1.0. MIT licensed. No runtime dependencies. */
+(function(root){
+'use strict';
+const PAPERS={A4:[210,297],Letter:[215.9,279.4],A3:[297,420],Legal:[215.9,355.6]};
+const PT=72/25.4;
+const finite=(v)=>typeof v==='number'&&Number.isFinite(v);
+const n=(v)=>Number(v.toFixed(5)).toString();
+const ascii=(s)=>String(s).replace(/[^\x20-\x7e]/g,'?').replace(/([\\()])/g,'\\$1');
+function tileCount(length,span,overlap){return Math.max(1,Math.ceil((length-overlap)/(span-overlap)-1e-9));}
+function plan(settings){
+ const {width,height,paper='A4',orientation='auto',margin=8,overlap=10}=settings;
+ if(!finite(width)||!finite(height)||width<20||height<20||width>5000||height>5000)throw Error('Set both poster dimensions between 20 mm and 5 metres.');
+ if(!PAPERS[paper])throw Error('Choose a supported paper size.');
+ if(!['auto','portrait','landscape'].includes(orientation))throw Error('Choose a page orientation.');
+ if(!finite(margin)||margin<5||margin>30)throw Error('Set a printer margin from 5 to 30 mm.');
+ if(!finite(overlap)||overlap<0||overlap>30)throw Error('Set overlap from 0 to 30 mm.');
+ function candidate(landscape){
+  const dims=PAPERS[paper],pw=dims[landscape?1:0],ph=dims[landscape?0:1],cw=pw-2*margin,ch=ph-2*margin;
+  if(cw<=overlap||ch<=overlap)throw Error('The overlap must be smaller than the printable area.');
+  const cols=tileCount(width,cw,overlap),rows=tileCount(height,ch,overlap);
+  return {width,height,paper,margin,overlap,pw,ph,cw,ch,cols,rows,count:cols*rows,stepX:cw-overlap,stepY:ch-overlap,orientation:landscape?'landscape':'portrait'};
+ }
+ let p=candidate(orientation==='landscape');
+ if(orientation==='auto'){const q=candidate(true);if(q.count<p.count)p=q;}
+ if(p.count>200)throw Error('This layout needs '+p.count+' sheets. Make the poster smaller or choose larger paper (maximum 200 sheets).');
+ p.tiles=[];
+ for(let r=0;r<p.rows;r++)for(let c=0;c<p.cols;c++){const x=c*p.stepX,y=r*p.stepY;p.tiles.push({index:r*p.cols+c,row:r+1,col:c+1,x,y,w:Math.min(p.cw,width-x),h:Math.min(p.ch,height-y)});}
+ return p;
+}
+function ppi(widthPx,heightPx,p){return Math.min(widthPx/(p.width/25.4),heightPx/(p.height/25.4));}
+function cuts(p,t){
+ const m=p.margin,x=m,y=m,w=t.w,h=t.h,d=Math.min(2.3,m-1),g=.55,lines=[];
+ for(const [cx,cy,sx,sy] of [[x,y,-1,-1],[x+w,y,1,-1],[x,y+h,-1,1],[x+w,y+h,1,1]]){
+  lines.push([cx+sx*g,cy,cx+sx*d,cy]);lines.push([cx,cy+sy*g,cx,cy+sy*d]);
+ }
+ return lines;
+}
+function pdf(jpeg,imageWidth,imageHeight,p,opts={}){
+ if(!(jpeg instanceof Uint8Array)||jpeg.length<4||jpeg[0]!==255||jpeg[1]!==216)throw Error('Could not encode the image as JPEG.');
+ if(!Number.isInteger(imageWidth)||!Number.isInteger(imageHeight)||imageWidth<=0||imageHeight<=0)throw Error('Invalid image dimensions.');
+ const enc=new TextEncoder(),objects=[null],add=(v)=>{objects.push(v);return objects.length-1;};
+ const cat=add(''),pages=add(''),font=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'),bold=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>');
+ function stream(dict,data){const bytes=typeof data==='string'?enc.encode(data):data;return {head:'<< '+dict+' /Length '+bytes.length+' >>\nstream\n',bytes,tail:'\nendstream'};}
+ const img=add(stream('/Type /XObject /Subtype /Image /Width '+imageWidth+' /Height '+imageHeight+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode',jpeg));
+ const kids=[];
+ function addPage(content){
+  const contentId=add(stream('',content));
+  const pageId=add('<< /Type /Page /Parent '+pages+' 0 R /MediaBox [0 0 '+n(p.pw*PT)+' '+n(p.ph*PT)+'] /Resources << /Font << /F1 '+font+' 0 R /F2 '+bold+' 0 R >> /XObject << /Im0 '+img+' 0 R >> >> /Contents '+contentId+' 0 R >>');kids.push(pageId);
+ }
+ function line(x1,y1,x2,y2){return n(x1*PT)+' '+n((p.ph-y1)*PT)+' m '+n(x2*PT)+' '+n((p.ph-y2)*PT)+' l S\n';}
+ function text(s,x,y,size=10,isBold=false){return 'BT /'+(isBold?'F2':'F1')+' '+size+' Tf 1 0 0 1 '+n(x*PT)+' '+n((p.ph-y)*PT)+' Tm ('+ascii(s)+') Tj ET\n';}
+ function rect(x,y,w,h,op='S'){return n(x*PT)+' '+n((p.ph-y-h)*PT)+' '+n(w*PT)+' '+n(h*PT)+' re '+op+'\n';}
+ if(opts.guide!==false){
+  let s='0.12 0.24 0.20 rg\n'+text('Poster Splitter',14,22,24,true)+text('Your assembly guide',14,31,11);
+  s+='0.88 0.93 0.83 rg\n'+rect(14,39,p.pw-28,20,'f')+'0.12 0.24 0.20 rg\n';
+  s+=text(n(p.width/10)+' x '+n(p.height/10)+' cm  |  '+p.count+' poster sheets  |  '+p.cols+' columns x '+p.rows+' rows',18,47,10,true);
+  s+=text(p.paper+' '+p.orientation+'  |  Margin '+n(p.margin)+' mm  |  Overlap '+n(p.overlap)+' mm',18,54,9);
+  s+=text('1. Print at 100% / Actual size.',14,72,12,true)+text('Use '+p.paper+' paper. Turn off Fit, Shrink and double-sided printing.',14,79,9);
+  s+=text('2. Check the 50 mm line below with a ruler.',14,91,12,true)+text('If it is the wrong length, correct the print scaling before printing the poster.',14,98,9);
+  s+=text('3. Trim, match and tape.',14,110,12,true)+text('Trim white margins at the corner marks. Work left to right, row by row.',14,117,9);
+  s+=text(p.overlap>0?'Match the repeated image strips, overlap them, and tape from behind.':'There is no overlap: butt trimmed image edges together and tape from behind.',14,124,9);
+  const mapX=14,mapY=139,maxW=Math.min(110,p.pw-100),maxH=Math.max(22,p.ph-167),cell=Math.min(maxW/p.cols,maxH/p.rows,17);
+  s+='0.35 0.45 0.38 RG 0.4 w\n';
+  for(const t of p.tiles){const x=mapX+(t.col-1)*cell,y=mapY+(t.row-1)*cell;s+=rect(x,y,cell,cell);if(cell>=7)s+=text(''+(t.index+1),x+1.5,y+cell*.62,Math.min(9,cell*1.15));}
+  s+=text('Start at the upper-left tile.',14,134,8);
+  const rulerX=p.pw-73,rulerY=151;
+  s+='0.12 0.24 0.20 RG 0.8 w\n'+line(rulerX,rulerY,rulerX+50,rulerY)+line(rulerX,rulerY-2,rulerX,rulerY+2)+line(rulerX+50,rulerY-2,rulerX+50,rulerY+2);
+  s+=text('50 mm / 5 cm',rulerX+11,145,9,true)+text('Measure end to end.',rulerX+8,160,8);
+  s+=text('Guide only - this page is not part of your poster.',14,p.ph-12,8);
+  addPage(s);
+ }
+ for(const t of p.tiles){
+  let s='q\n'+rect(p.margin,p.margin,t.w,t.h,'W n');
+  s+=n(p.width*PT)+' 0 0 '+n(p.height*PT)+' '+n((p.margin-t.x)*PT)+' '+n((p.ph-p.margin+t.y-p.height)*PT)+' cm\n/Im0 Do\nQ\n';
+  if(opts.cropMarks!==false){s+='0.22 G 0.45 w\n';for(const l of cuts(p,t))s+=line(...l);}
+  if(opts.labels!==false){s+='0.3 g\n';s+=text('Sheet '+(t.index+1)+'/'+p.count+'  |  Row '+t.row+' / Column '+t.col+'  |  100% / Actual size',p.margin,p.ph-p.margin*.35,7);}
+  addPage(s);
+ }
+ objects[cat]='<< /Type /Catalog /Pages '+pages+' 0 R /ViewerPreferences << /PrintScaling /None /Duplex /Simplex >> >>';
+ objects[pages]='<< /Type /Pages /Count '+kids.length+' /Kids ['+kids.map(id=>id+' 0 R').join(' ')+'] >>';
+ const info=add('<< /Title (Poster Splitter - '+ascii(opts.title||'Poster')+') /Creator (Poster Splitter 1.0) /Producer (Poster Splitter offline PDF writer) >>');
+ let length=0;const chunks=[],offsets=[0];
+ function push(v){const b=typeof v==='string'?enc.encode(v):v;chunks.push(b);length+=b.length;}
+ push('%PDF-1.4\n%');push(new Uint8Array([226,227,207,211]));push('\n');
+ for(let i=1;i<objects.length;i++){offsets[i]=length;push(i+' 0 obj\n');const obj=objects[i];if(typeof obj==='string')push(obj);else{push(obj.head);push(obj.bytes);push(obj.tail);}push('\nendobj\n');}
+ const xref=length;push('xref\n0 '+objects.length+'\n0000000000 65535 f \n');for(let i=1;i<objects.length;i++)push(String(offsets[i]).padStart(10,'0')+' 00000 n \n');
+ push('trailer\n<< /Size '+objects.length+' /Root '+cat+' 0 R /Info '+info+' 0 R >>\nstartxref\n'+xref+'\n%%EOF\n');
+ const out=new Uint8Array(length);let pos=0;for(const b of chunks){out.set(b,pos);pos+=b.length;}return out;
+}
+root.PosterCore=Object.freeze({PAPERS,plan,ppi,cuts,pdf});
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script>
+<script id="poster-ui">
+(function(){
+'use strict';
+const $=id=>document.getElementById(id),C=PosterCore;
+const state={source:null,image:null,name:'Sample artwork',sample:true,turns:0,flip:false,unit:'cm',width:600,height:750,plan:null,view:'poster',zoom:1,busy:false,loading:false,loadSerial:0,downscaled:false,originalWidth:0,originalHeight:0,pdfUrl:null,thumbUrl:null,hits:[],sheetIndex:0,renderFrame:0};
+const unitFactor={cm:10,mm:1,in:25.4};
+const fmt=(v,d=2)=>Number(v.toFixed(d)).toLocaleString('en-US',{maximumFractionDigits:d});
+const numeric=(id)=>$(id).value.trim()===''?NaN:Number($(id).value);
+function status(s){$('status').textContent=s;}
+function imageError(s){$('imageError').textContent=s;$('imageError').hidden=!s;}
+function invalidateDownload(){if(state.pdfUrl){URL.revokeObjectURL(state.pdfUrl);state.pdfUrl=null;}$('downloadReady').hidden=true;}
+function setNotice(s,kind=''){ $('noticeText').textContent=s;$('notice').className='notice'+(kind?' '+kind:''); }
+function syncDimensions(){const f=unitFactor[state.unit];$('posterWidth').value=Number((state.width/f).toFixed(4));$('posterHeight').value=Number((state.height/f).toFixed(4));for(const id of ['posterWidth','posterHeight']){$(id).min=20/f;$(id).max=5000/f;$(id).step=state.unit==='mm'?'1':'0.1';}}
+function blankCanvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
+function sample(){
+ const c=blankCanvas(2000,2500),x=c.getContext('2d');x.fillStyle='#e8ecdc';x.fillRect(0,0,c.width,c.height);
+ x.fillStyle='#294e40';x.font='600 33px Arial';x.fillText('A LITTLE PAPER. A LOT OF POSSIBILITY.',130,165);
+ x.fillStyle='#edaa8f';x.beginPath();x.arc(1600,770,690,0,Math.PI*2);x.fill();
+ x.fillStyle='#d8eaa8';x.fillRect(0,890,2000,1610);
+ x.fillStyle='#315e47';x.beginPath();x.moveTo(0,1500);x.bezierCurveTo(420,990,720,1110,1010,1450);x.bezierCurveTo(1260,1770,1570,1830,2000,1280);x.lineTo(2000,2500);x.lineTo(0,2500);x.fill();
+ x.fillStyle='#9abc78';x.beginPath();x.moveTo(0,1980);x.bezierCurveTo(570,1420,1100,2130,2000,1630);x.lineTo(2000,2500);x.lineTo(0,2500);x.fill();
+ x.fillStyle='#16382b';x.font='900 235px Arial';x.fillText('MAKE',120,500);x.fillText('SOMETHING',110,755);x.fillText('BIG.',120,1010);
+ x.fillStyle='#efb095';x.beginPath();x.arc(1510,2050,220,0,Math.PI*2);x.fill();x.strokeStyle='#16382b';x.lineWidth=20;x.beginPath();x.moveTo(1400,2050);x.lineTo(1620,2050);x.moveTo(1510,1940);x.lineTo(1510,2160);x.stroke();
+ x.fillStyle='#16382b';x.font='600 34px Arial';x.fillText('PRINT. TRIM. MAKE ROOM.',130,2350);x.font='28px Arial';x.fillText('POSTER SPLITTER / SAMPLE 01',130,2405);
+ return c;
+}
+function applyTransform(resetSize=false){
+ if(!state.source)return;
+ const src=state.source,w=src.width,h=src.height,odd=state.turns%2!==0;
+ const c=blankCanvas(odd?h:w,odd?w:h),x=c.getContext('2d',{alpha:false});
+ if(!x)throw Error('Your browser could not prepare this image. Try a smaller image.');
+ x.fillStyle='white';x.fillRect(0,0,c.width,c.height);x.translate(c.width/2,c.height/2);x.scale(state.flip?-1:1,1);x.rotate(state.turns*Math.PI/2);x.drawImage(src,-w/2,-h/2);
+ const old=state.image;state.image=c;if(old&&old!==src){old.width=1;old.height=1;}
+ if(resetSize||$('lockRatio').checked){state.height=state.width*c.height/c.width;syncDimensions();}
+ const thumb=blankCanvas(120,150),tx=thumb.getContext('2d');tx.fillStyle='#fff';tx.fillRect(0,0,120,150);const s=Math.min(120/c.width,150/c.height);tx.drawImage(c,(120-c.width*s)/2,(150-c.height*s)/2,c.width*s,c.height*s);$('sourceThumb').src=thumb.toDataURL('image/jpeg',.75);
+ $('fileName').textContent=state.name;$('fileName').title=state.name;
+ $('fileMeta').textContent=c.width.toLocaleString()+' × '+c.height.toLocaleString()+' px'+(state.downscaled?' · reduced for export':'');
+ $('previewBadge').textContent=state.sample?'SAMPLE ARTWORK':'YOUR IMAGE · LOCAL ONLY';
+ invalidateDownload();update();
+}
+function loadSample(){
+ state.loadSerial++;state.loading=false;state.sample=true;state.name='Sample artwork';state.turns=0;state.flip=false;state.downscaled=false;
+ if(state.source){state.source.width=1;state.source.height=1;}state.source=sample();state.originalWidth=state.source.width;state.originalHeight=state.source.height;
+ imageError('');applyTransform(true);status('Try the sample, or choose your own image to get started.');setBusy(false);
+}
+async function loadFile(file){
+ if(!file||state.busy)return;
+ const validMime=['image/jpeg','image/png','image/webp'];
+ if((file.type&&!validMime.includes(file.type))||(!file.type&&!/\.(jpe?g|png|webp)$/i.test(file.name))){imageError('Choose a JPG, PNG or WebP image. PDF, SVG, GIF and HEIC inputs are not supported.');return;}
+ if(file.size>80*1024*1024){imageError('This image is larger than 80 MB. Choose a smaller copy.');return;}
+ const serial=++state.loadSerial;state.loading=true;imageError('');status('Opening your image locally…');$('exportPdf').disabled=true;
+ const url=URL.createObjectURL(file);let source=null;
+ try{
+  const img=new Image();await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(Error('This image could not be opened. Try a standard JPG, PNG or WebP copy.'));img.src=url;});
+  if(serial!==state.loadSerial)return;
+  const w=img.naturalWidth,h=img.naturalHeight;
+  if(!w||!h||w*h>80000000)throw Error('Choose an image below 80 megapixels so it can be processed safely in your browser.');
+  const scale=Math.min(1,Math.sqrt(24000000/(w*h)),12000/Math.max(w,h));
+  source=blankCanvas(Math.max(1,Math.floor(w*scale)),Math.max(1,Math.floor(h*scale)));const x=source.getContext('2d',{alpha:false});
+  if(!x)throw Error('Your browser could not prepare this image. Try a smaller copy.');
+  x.fillStyle='#fff';x.fillRect(0,0,source.width,source.height);x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(img,0,0,source.width,source.height);
+  if(state.source){state.source.width=1;state.source.height=1;}
+  state.source=source;state.name=file.name||'Pasted image';state.sample=false;state.turns=0;state.flip=false;state.originalWidth=w;state.originalHeight=h;state.downscaled=scale<.999999;
+  applyTransform(true);status(state.downscaled?'Image opened. A smaller raster is used for export; the quality estimate reflects that size.':'Image opened locally. Set your poster size, then download the PDF.');
+ }catch(e){imageError(e.message||'Could not open this image.');status('Your previous image is still available.');}
+ finally{URL.revokeObjectURL(url);if(serial===state.loadSerial){state.loading=false;update();}}
+}
+function readPlan(){
+ return C.plan({width:state.width,height:state.height,paper:$('paper').value,orientation:$('orientation').value,margin:numeric('margin'),overlap:numeric('overlap')});
+}
+function update(){
+ try{
+  const p=readPlan();state.plan=p;
+  const f=unitFactor[state.unit];$('sizeMetric').textContent=fmt(p.width/f)+' × '+fmt(p.height/f)+' '+state.unit;
+  $('sheetsMetric').textContent=p.count+' '+(p.count===1?'sheet':'sheets');$('sheetsDetail').textContent=p.cols+' across × '+p.rows+' down'+($('includeGuide').checked?' · +1 guide':'');
+  const dpi=state.image?C.ppi(state.image.width,state.image.height,p):0;$('dpiMetric').textContent=Math.round(dpi)+' PPI';
+  $('dpiDetail').textContent=dpi>=150?'Good detail at this size':dpi>=100?'Best viewed from a distance':'Visible softness up close';
+  $('layoutText').textContent=p.paper+' · '+p.orientation+' · '+p.count+' sheets';
+  let message=dpi<100?'This enlargement may look soft up close. Use a higher-resolution image or a smaller poster.':dpi<150?'A good size for viewing from a distance. Check a sheet before printing the whole poster.':'Ready to print. Check the scale on the guide before printing the whole poster.';
+  if(state.downscaled)message+=' Large image reduced to '+state.image.width+' × '+state.image.height+' px for export.';
+  setNotice(message,dpi<100?'warn':'');$('exportPdf').disabled=state.busy||state.loading||!state.image;
+ }catch(e){state.plan=null;setNotice(e.message,'error');$('exportPdf').disabled=true;$('sheetsMetric').textContent='-';$('sheetsDetail').textContent='Adjust the settings above';$('dpiMetric').textContent='-';$('dpiDetail').textContent='No valid layout';$('layoutText').textContent='Layout needs attention';}
+ scheduleRender();
+}
+function scheduleRender(){cancelAnimationFrame(state.renderFrame);state.renderFrame=requestAnimationFrame(render);}
+function drawTile(x,p,t,px,py,scale,withShadow=false){
+ x.save();if(withShadow){x.shadowColor='#203e3528';x.shadowBlur=10;x.shadowOffsetY=3;}x.fillStyle='white';x.fillRect(px,py,p.pw*scale,p.ph*scale);x.restore();
+ x.drawImage(state.image,t.x/p.width*state.image.width,t.y/p.height*state.image.height,t.w/p.width*state.image.width,t.h/p.height*state.image.height,px+p.margin*scale,py+p.margin*scale,t.w*scale,t.h*scale);
+ if($('cropMarks').checked){x.strokeStyle='#505c55';x.lineWidth=Math.max(.6,scale*.16);x.beginPath();for(const l of C.cuts(p,t)){x.moveTo(px+l[0]*scale,py+l[1]*scale);x.lineTo(px+l[2]*scale,py+l[3]*scale);}x.stroke();}
+ if($('pageLabels').checked){x.fillStyle='#53645b';x.font=Math.max(3.5,scale*2.45)+'px Arial';x.textAlign='left';x.fillText('Sheet '+(t.index+1)+'/'+p.count+'  |  Row '+t.row+' / Column '+t.col+'  |  100% / Actual size',px+p.margin*scale,py+(p.ph-p.margin*.35)*scale);}
+}
+function setupCanvas(c,w,h){const dpr=Math.min(window.devicePixelRatio||1,2);c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);c.style.width=w+'px';c.style.height=h+'px';const x=c.getContext('2d');x.scale(dpr,dpr);return x;}
+function render(){
+ const p=state.plan,c=$('previewCanvas'),stage=$('previewStage');state.hits=[];
+ if(!p||!state.image){const x=setupCanvas(c,Math.max(240,stage.clientWidth-40),200);x.fillStyle='#64756d';x.font='14px Arial';x.textAlign='center';x.fillText('Adjust your settings to preview the poster.',parseFloat(c.style.width)/2,100);return;}
+ const availableW=Math.max(200,stage.clientWidth-40),availableH=Math.max(220,stage.clientHeight-40),z=state.zoom;
+ if(state.view==='poster'){
+  const pad=32,scale=Math.min((availableW-pad*2)/p.width,(availableH-pad*2)/p.height)*z,w=p.width*scale,h=p.height*scale,x=setupCanvas(c,w+pad*2,h+pad*2);
+  x.save();x.shadowColor='#193c2c30';x.shadowBlur=16;x.shadowOffsetY=5;x.fillStyle='#fff';x.fillRect(pad,pad,w,h);x.restore();x.drawImage(state.image,pad,pad,w,h);
+  if($('showGrid').checked){
+   x.save();x.beginPath();x.rect(pad,pad,w,h);x.clip();
+   x.fillStyle='rgba(77,137,111,.23)';
+   for(let col=1;col<p.cols;col++)x.fillRect(pad+col*p.stepX*scale,pad,p.overlap*scale,h);
+   for(let row=1;row<p.rows;row++)x.fillRect(pad,pad+row*p.stepY*scale,w,p.overlap*scale);
+   x.setLineDash([5,4]);x.lineWidth=1;x.strokeStyle='rgba(255,255,255,.95)';x.beginPath();for(let col=1;col<p.cols;col++){const xx=pad+col*p.stepX*scale;x.moveTo(xx,pad);x.lineTo(xx,pad+h);}for(let row=1;row<p.rows;row++){const yy=pad+row*p.stepY*scale;x.moveTo(pad,yy);x.lineTo(pad+w,yy);}x.stroke();x.setLineDash([]);
+   for(const t of p.tiles){const cx=pad+(t.x+Math.min(p.stepX,t.w)/2)*scale,cy=pad+(t.y+Math.min(p.stepY,t.h)/2)*scale;if(p.stepX*scale>45&&p.stepY*scale>27){const label=t.row+'·'+t.col;x.font='600 10px Arial';const tw=x.measureText(label).width;x.fillStyle='rgba(255,255,255,.9)';x.fillRect(cx-tw/2-7,cy-9,tw+14,18);x.fillStyle='#234a39';x.textAlign='center';x.fillText(label,cx,cy+3);}}
+   x.restore();
+  }
+  x.fillStyle='#526b59';x.font='11px Arial';x.textAlign='center';x.fillText(fmt(p.width/unitFactor[state.unit])+' '+state.unit,pad+w/2,pad+h+21);
+  x.save();x.translate(13,pad+h/2);x.rotate(-Math.PI/2);x.fillText(fmt(p.height/unitFactor[state.unit])+' '+state.unit,0,0);x.restore();
+  c.style.cursor='default';c.removeAttribute('tabindex');c.setAttribute('aria-label','Assembled poster: '+p.cols+' columns by '+p.rows+' rows. '+$('sizeMetric').textContent+'.');
+ }else{
+  const gapMM=10,scale=Math.min((availableW-20)/(p.cols*p.pw+(p.cols-1)*gapMM),(availableH-20)/(p.rows*p.ph+(p.rows-1)*gapMM))*z,gap=gapMM*scale;
+  const w=p.cols*p.pw*scale+(p.cols-1)*gap+20,h=p.rows*p.ph*scale+(p.rows-1)*gap+20,x=setupCanvas(c,w,h);
+  for(const t of p.tiles){const px=10+(t.col-1)*(p.pw*scale+gap),py=10+(t.row-1)*(p.ph*scale+gap);drawTile(x,p,t,px,py,scale,true);state.hits.push({x:px,y:py,w:p.pw*scale,h:p.ph*scale,index:t.index});}
+  c.style.cursor='pointer';c.tabIndex=0;c.setAttribute('aria-label','Paper sheets preview. Click a sheet to inspect it. Press Enter to inspect the first sheet.');
+ }
+ $('gridLabel').hidden=state.view!=='poster';$('legendText').textContent=state.view==='poster'?(p.overlap?'Shaded strips = repeated overlap':'No overlap · image edges meet'):'Click a sheet to inspect · Enter opens sheet 1';
+}
+function showSheet(index){
+ if(!state.plan||!state.image)return;
+ const p=state.plan;state.sheetIndex=Math.max(0,Math.min(p.count-1,index));const t=p.tiles[state.sheetIndex];
+ $('sheetTitle').textContent='Row '+t.row+' · Column '+t.col;$('sheetPosition').textContent='Sheet '+(t.index+1)+' of '+p.count;
+ const scale=Math.min(540/p.pw,660/p.ph),x=setupCanvas($('sheetCanvas'),p.pw*scale,p.ph*scale);$('sheetCanvas').style.height='auto';drawTile(x,p,t,0,0,scale);
+ $('prevSheet').disabled=t.index===0;$('nextSheet').disabled=t.index===p.count-1;
+ if(!$('sheetDialog').open)$('sheetDialog').showModal();
+}
+function setBusy(b){state.busy=b;document.querySelectorAll('.settings button,.settings input,.settings select').forEach(el=>el.disabled=b);$('exportLabel').textContent=b?'Preparing PDF…':'Download print PDF';update();}
+async function exportPdf(){
+ if(!state.plan||!state.image||state.busy||state.loading)return;
+ const p=state.plan,art=state.image;setBusy(true);status('Creating your print PDF locally…');invalidateDownload();
+ try{
+  await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,25)));
+  const blob=await new Promise((resolve,reject)=>art.toBlob(b=>b&&b.type==='image/jpeg'?resolve(b):reject(Error('The image could not be encoded. Try a smaller image.')),'image/jpeg',numeric('quality')));
+  const bytes=C.pdf(new Uint8Array(await blob.arrayBuffer()),art.width,art.height,p,{guide:$('includeGuide').checked,cropMarks:$('cropMarks').checked,labels:$('pageLabels').checked,title:state.name});
+  const output=new Blob([bytes],{type:'application/pdf'});state.pdfUrl=URL.createObjectURL(output);
+  const base=state.name.replace(/\.[^.]+$/,'').replace(/[<>:"/\\|?*\u0000-\u001f]/g,'-').trim().slice(0,80)||'poster';
+  const name='Poster-Splitter-'+base+'-'+p.count+'-sheets.pdf';
+  const a=$('downloadAgain');a.href=state.pdfUrl;a.download=name;$('openPdf').href=state.pdfUrl;$('readySummary').textContent='PDF ready · '+(p.count+($('includeGuide').checked?1:0))+' pages · '+fmt(output.size/1024/1024,2)+' MB';$('downloadReady').hidden=false;
+  a.click();status('Your PDF is ready. If the download did not start, use Download PDF above.');
+ }catch(e){status('PDF could not be created. '+(e.message||'Try a smaller image.'));setNotice('Export failed. Your image is still here; try a smaller image or fewer sheets.','error');}
+ finally{setBusy(false);}
+}
+function changed(){invalidateDownload();update();}
+function dimensionChanged(which){
+ const factor=unitFactor[state.unit],w=numeric('posterWidth')*factor,h=numeric('posterHeight')*factor;
+ state.width=w;state.height=h;
+ if($('lockRatio').checked&&state.image){
+  if(which==='w'&&Number.isFinite(w)&&w>0){state.height=w*state.image.height/state.image.width;$('posterHeight').value=Number((state.height/factor).toFixed(4));}
+  if(which==='h'&&Number.isFinite(h)&&h>0){state.width=h*state.image.width/state.image.height;$('posterWidth').value=Number((state.width/factor).toFixed(4));}
+ }
+ changed();
+}
+$('chooseImage').addEventListener('click',()=>$('fileInput').click());
+$('fileInput').addEventListener('change',()=>{loadFile($('fileInput').files[0]);$('fileInput').value='';});
+const drop=$('dropZone');
+for(const evt of ['dragenter','dragover'])drop.addEventListener(evt,e=>{e.preventDefault();if(!state.busy)drop.classList.add('over');});
+for(const evt of ['dragleave','drop'])drop.addEventListener(evt,e=>{e.preventDefault();drop.classList.remove('over');});
+drop.addEventListener('drop',e=>{if(!state.busy&&e.dataTransfer.files.length)loadFile(e.dataTransfer.files[0]);});
+document.addEventListener('dragover',e=>e.preventDefault());document.addEventListener('drop',e=>e.preventDefault());
+document.addEventListener('paste',e=>{const f=Array.from(e.clipboardData?.items||[]).find(i=>i.kind==='file'&&i.type.startsWith('image/'));if(f&&!state.busy){e.preventDefault();loadFile(f.getAsFile());}});
+$('rotateLeft').addEventListener('click',()=>{state.turns=(state.turns+3)%4;if($('lockRatio').checked)[state.width,state.height]=[state.height,state.width];applyTransform();});
+$('rotateRight').addEventListener('click',()=>{state.turns=(state.turns+1)%4;if($('lockRatio').checked)[state.width,state.height]=[state.height,state.width];applyTransform();});
+$('flipImage').addEventListener('click',()=>{state.flip=!state.flip;applyTransform();});
+$('resetImage').addEventListener('click',loadSample);
+$('posterWidth').addEventListener('input',()=>dimensionChanged('w'));$('posterHeight').addEventListener('input',()=>dimensionChanged('h'));
+$('unit').addEventListener('change',()=>{state.unit=$('unit').value;syncDimensions();changed();});
+$('lockRatio').addEventListener('change',()=>{$('aspectWarning').hidden=$('lockRatio').checked;if($('lockRatio').checked){state.height=state.width*state.image.height/state.image.width;syncDimensions();}changed();});
+document.querySelectorAll('[data-width]').forEach(b=>b.addEventListener('click',()=>{state.width=Number(b.dataset.width);if($('lockRatio').checked)state.height=state.width*state.image.height/state.image.width;syncDimensions();changed();}));
+for(const id of ['paper','orientation','quality','cropMarks','pageLabels','includeGuide'])$(id).addEventListener('change',changed);
+for(const id of ['margin','overlap'])$(id).addEventListener('input',changed);
+for(const [id,view] of [['posterView','poster'],['sheetsView','sheets']])$(id).addEventListener('click',()=>{state.view=view;$('posterView').setAttribute('aria-pressed',String(view==='poster'));$('sheetsView').setAttribute('aria-pressed',String(view==='sheets'));$('previewStage').scrollTo(0,0);scheduleRender();});
+$('showGrid').addEventListener('change',scheduleRender);$('zoom').addEventListener('change',()=>{state.zoom=Number($('zoom').value);scheduleRender();});
+$('previewCanvas').addEventListener('click',e=>{if(state.view!=='sheets')return;const b=e.currentTarget.getBoundingClientRect(),xx=e.clientX-b.left,yy=e.clientY-b.top,h=state.hits.find(t=>xx>=t.x&&xx<=t.x+t.w&&yy>=t.y&&yy<=t.y+t.h);if(h)showSheet(h.index);});
+$('previewCanvas').addEventListener('keydown',e=>{if(state.view==='sheets'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showSheet(0);}});
+$('prevSheet').addEventListener('click',()=>showSheet(state.sheetIndex-1));$('nextSheet').addEventListener('click',()=>showSheet(state.sheetIndex+1));
+$('sheetDialog').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();showSheet(state.sheetIndex-1);}if(e.key==='ArrowRight'){e.preventDefault();showSheet(state.sheetIndex+1);}});
+$('helpButton').addEventListener('click',()=>$('helpDialog').showModal());document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
+$('exportPdf').addEventListener('click',exportPdf);
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(scheduleRender).observe($('previewStage'));else window.addEventListener('resize',scheduleRender);
+window.addEventListener('beforeunload',()=>{if(state.pdfUrl)URL.revokeObjectURL(state.pdfUrl);});
+loadSample();
+})();
+</script>
+</body>
+</html>

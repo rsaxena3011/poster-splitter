@@ -1,0 +1,99 @@
+POSTER SPLITTER 1.0
+Small pages. Big possibilities.
+Free, offline, and editable.
+
+OPEN THE APP
+1. Extract this ZIP.
+2. Double-click Poster-Splitter.html to open it in your browser.
+   If it opens in a text editor, use Open with and choose your browser.
+3. Choose a JPG, PNG or WebP image, drag it onto the image box, or paste an image.
+4. Set the finished poster size and choose your printer's paper size.
+5. Click Download print PDF. Open that PDF to print.
+
+The two files in this folder are all you need:
+- Poster-Splitter.html: the entire app, including its editable source.
+- START-HERE.txt: this guide and the license.
+
+No installer, account, admin access, server, build step, subscription, or internet
+connection is required. Your original image is not modified. The app does not
+upload images, contact external servers, or save your image between sessions.
+
+WHAT YOU CAN CHANGE
+- Finished poster width and height, in cm, mm or inches.
+- Image proportions: locked by default; unlocking allows stretching.
+- Image rotation and horizontal flip.
+- Paper: A4, Letter, A3 or Legal.
+- Page orientation: portrait, landscape, or auto to use fewer sheets.
+- Overlap: 0 to 30 mm. The repeated strip helps line up adjacent tiles.
+- Printer margins: 5 to 30 mm. Use at least your printer's minimum margin.
+- PDF image quality, cutting marks, page labels and assembly-guide inclusion.
+- Assembled or separate-sheet preview, with zoom and individual-sheet inspection.
+
+PRINTING: IMPORTANT
+Print the EXPORTED PDF, not the app webpage.
+- Choose the same paper size used in the app.
+- Use 100% / Actual size. Turn OFF Fit, Shrink and any additional poster mode.
+- Print single-sided. Match the PDF's page orientation.
+- If included, print the guide first and measure its 50 mm line with a ruler.
+  If the length is wrong, fix the print scaling before printing the other pages.
+- The displayed sheet count is for the poster. The optional guide adds one page.
+
+ASSEMBLE
+Trim the white margins around each image tile at the corner marks. On a partial
+last sheet, trim at the image edge, not the far edge of the paper. Arrange row 1
+from left to right, then row 2, and so on. Match the repeated image strips,
+overlap them, and tape from behind. With 0 mm overlap, butt the image edges
+together instead. Page numbers and cutting marks are outside the final image.
+
+QUALITY AND LIMITS
+Enlarging does not add detail. The PPI estimate uses the pixels in the image and
+the chosen physical poster dimensions. Soft images stay soft when enlarged.
+Inputs are JPG, PNG and WebP, up to 80 MB and 80 megapixels. PDF, SVG, GIF and
+HEIC inputs are not supported. Export uses a JPEG raster at your selected
+quality, with transparency flattened onto white. Larger images are reduced to
+at most 24 megapixels or 12,000 pixels per side; the app reports the reduction
+and calculates PPI using the export dimensions. This is an RGB home-print tool,
+not a CMYK / prepress workflow. Final colour depends on your printer and paper.
+Each poster side must be between 20 mm and 5 metres; maximum 200 poster sheets.
+Very large images may exceed the memory available on some devices.
+
+IF A DOWNLOAD DOES NOT APPEAR
+After PDF creation, use the explicit Download PDF link below the export button,
+or Open PDF to print and use your PDF viewer's Save/Download control. Check your
+browser's download list. Keep the app tab open until the file is saved. Changing
+the image or print settings clears the old PDF link; create a new PDF afterward.
+
+EDIT OR SHARE
+Open Poster-Splitter.html in any text/code editor. CSS, layout, sample art,
+tiling calculations and PDF generation are included, with no external libraries.
+You can share this ZIP as a free download or put the HTML on a static host.
+For GitHub Pages, name a copy index.html. No backend configuration is required.
+This package does not automatically publish anything.
+
+VALIDATION
+Checked: image loading and controls in Chromium, mobile/tablet layouts,
+1,200 generated layout cases, five PDF fixtures, page dimensions, cutting-mark
+bounds, guide scale line, and image placement. An automated preview restriction
+prevented end-to-end browser download capture. Physical printer output and
+browser/OS combinations beyond the tested preview have not been verified.
+
+MIT LICENSE
+Copyright (c) 2026 Poster Splitter contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
